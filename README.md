@@ -1,367 +1,266 @@
-🌫️ Deep Learning-Based Classification of Air Pollution Levels from Sky Images
+<div align="center">
 
-Python
-TensorFlow
-Keras
-Computer Vision
-Jupyter Notebook
-NumPy
-Pandas
-Matplotlib
-Grad-CAM
+# Deep Learning-Based Classification of Air Pollution Levels from Sky Images
 
+**An MCA capstone research project that classifies air-pollution levels from sky images using CNN and transfer-learning models, with Grad-CAM interpretability.**
 
-A deep learning and computer vision project that classifies air pollution levels from sky and urban images into six categories using CNNs, transfer learning, and explainable AI.
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://docs.python.org/3/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+[![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)](https://keras.io/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/doc/)
+[![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/docs/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge)](https://matplotlib.org/stable/)
+[![Computer Vision](https://img.shields.io/badge/Computer_Vision-008080?style=for-the-badge)](https://www.tensorflow.org/tutorials/images)
 
+[![Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shaswatsingh-analytics/Air-Pollution-Classification-Deep-Learning)
+[![Notebook](https://img.shields.io/badge/Open-Project_Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](./Air_Pollution_Classification_Final.ipynb)
+[![Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?style=flat-square&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal)
+[![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-0A66C2?style=flat-square)](https://www.linkedin.com/in/shaswatsinghda27)
 
-Kaggle Dataset
-Project Notebook
-LinkedIn
-GitHub Repository
+</div>
 
+---
 
+## Quick Navigation
 
-📑 Quick Navigation
+[Highlights](#highlights) · [Overview](#overview) · [Dataset](#dataset) · [Tools](#tools-and-technologies) · [Methodology](#methodology) · [Results](#results-and-performance) · [How to Run](#how-to-run) · [Milestone 1](#milestone-1--current-progress) · [Limitations](#limitations) · [Team](#team-and-academic-information)
 
+---
 
-Overview
+## Highlights
 
-Problem Statement
+| | |
+|---|---|
+| **Task** | Six-class classification of air-pollution level from sky images |
+| **Best image-only model** | Fine-tuned EfficientNetB0, **94.69%** test accuracy |
+| **Macro / Weighted F1** | 95.07% / 94.69% |
+| **Models compared** | Custom CNN, EfficientNetB0, ResNet50 |
+| **Interpretability** | Grad-CAM visualisation of influential image regions |
+| **Extra experiment** | Separate multimodal run (images + pollutant features), see [caveats](#separate-multimodal-experiment) |
+| **Status** | Academic research prototype, Milestone 1 |
 
-Dataset
+---
 
-Tools and Technologies
+## Overview
 
-Methods and Models
+Air pollution is a major environmental concern, and the visible appearance of the sky changes with atmospheric conditions. This project investigates whether deep learning and computer vision models can classify sky images into predefined air-pollution categories.
 
-Results
+Using the **Air Pollution Image Dataset from India and Nepal (APIN)**, the project compares a custom Convolutional Neural Network (CNN) with transfer-learning models (EfficientNetB0 and ResNet50). Grad-CAM is used to visualise the image regions that influence predictions.
 
-Model Outputs
+> **Note:** This is an academic research prototype. It is **not** an official air-quality monitoring system and does not measure PM2.5 or produce a validated AQI reading.
 
-How to Run
+### Problem Statement
 
-Repository Structure
+Visual patterns in sky images may correlate with pollution levels, but image appearance is also affected by lighting, weather, location and camera settings. This project explores how well deep learning can learn pollution-level categories from such images, and how far the results can be trusted.
 
-Limitations
+### Objectives
 
-Future Work
+- Classify sky images into six dataset-defined pollution categories.
+- Train and compare a custom CNN, EfficientNetB0 and ResNet50.
+- Evaluate with test accuracy and F1-scores.
+- Use Grad-CAM to inspect image regions linked to predictions.
+- Explore multimodal learning (images + environmental features) as a separate experiment.
+- Document results, limitations and next steps transparently.
 
-Team and Acknowledgements
+---
 
+## Dataset
 
-📌 Overview
+**Air Pollution Image Dataset from India and Nepal (APIN)**
 
-Air pollution is a major environmental and public-health concern. This project investigates whether visual features in outdoor sky and urban images can help classify air pollution levels using deep learning.
+| Detail | Description |
+|---|---|
+| Total images | 12,240 |
+| Training | 9,792 |
+| Validation | 1,224 |
+| Test | 1,224 |
+| Classes | 6 |
 
+**Classes:** Good · Moderate · Unhealthy for Sensitive Groups · Unhealthy · Very Unhealthy · Severe
 
-The project uses the Air Pollution Image Dataset from India and Nepal (APIN) and compares a custom Convolutional Neural Network (CNN) with pretrained architectures. It also explores a multimodal approach that combines image features with environmental pollutant measurements.
+**Links:** [Kaggle dataset](https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal) · [Source repository](https://github.com/ICCC-Platform/Air-Pollution-Image-Dataset-From-India-and-Nepal) · [DOI](https://doi.org/10.34740/KAGGLE/DS/3152196)
 
+**Citation:** Rouniyar et al. (2023). *Air Pollution Image Dataset from India and Nepal* [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DS/3152196
 
-This is a research prototype intended to support exploration and awareness. It is not a replacement for official air-quality monitoring stations or certified AQI measurements.
+The dataset is an external research resource and is not claimed as original work of this team.
 
+---
 
-🎯 Problem Statement
+## Tools and Technologies
 
-Air-quality assessment commonly relies on measurements collected by sensors and monitoring stations. This project explores image-based classification as a complementary research approach by training deep learning models to assign sky and urban images to one of six pollution categories.
+| Technology | Purpose in this project | Docs |
+|---|---|---|
+| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | Core language for data preparation, training and evaluation | [Python docs](https://docs.python.org/3/) |
+| ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white) | Deep-learning framework | [TensorFlow docs](https://www.tensorflow.org/api_docs) |
+| ![Keras](https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white) | Building and training neural networks | [Keras docs](https://keras.io/api/) |
+| ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white) | Notebook-based experimentation | [Jupyter docs](https://docs.jupyter.org/) |
+| ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) | Numerical operations and arrays | [NumPy docs](https://numpy.org/doc/) |
+| ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) | Tabular data for the multimodal experiment | [Pandas docs](https://pandas.pydata.org/docs/) |
+| ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square) | Plots and result visualisation | [Matplotlib docs](https://matplotlib.org/stable/) |
 
+---
 
-The project evaluates model performance using accuracy, precision, recall, F1-score, and confusion matrices, and uses Grad-CAM to inspect image regions influencing model predictions.
+## Methodology
 
+1. **Data loading and exploration:** load the APIN dataset and inspect the six classes.
+2. **Preprocessing and splitting:** prepare images and use the 9,792 / 1,224 / 1,224 train / validation / test split.
+3. **Model training:** train a custom CNN and transfer-learning models.
+4. **Evaluation:** measure test accuracy and F1-scores.
+5. **Model comparison:** compare all image-only models on the same test split.
+6. **Interpretability:** apply Grad-CAM to selected predictions.
+7. **Multimodal experiment:** separately combine images with environmental features.
 
-📂 Dataset
+Exact preprocessing settings and hyperparameters are in the [project notebook](./Air_Pollution_Classification_Final.ipynb).
 
-Dataset: Air Pollution Image Dataset from India and Nepal (APIN)
+### Models Implemented
 
+| Model | Role |
+|---|---|
+| Custom CNN | Baseline convolutional model for six-class classification |
+| EfficientNetB0 | Transfer-learning model; fine-tuned version gave the best image-only result |
+| ResNet50 | Residual network evaluated for comparison |
+| Grad-CAM | Visual explanation of image regions behind predictions |
 
+---
 
-Total images: 12,240
+## Results and Performance
 
-Image dimensions: 224 × 224 pixels
+### Image-only classification
 
-Image type: RGB
+| Model | Test Accuracy |
+|---|---|
+| Custom CNN | 78.10% |
+| **EfficientNetB0 (fine-tuned)** | **94.69%** |
+| ResNet50 | 92.32% |
 
-Number of classes: 6
+**Best model: fine-tuned EfficientNetB0**
 
-Image-only training split: 9,792 images
+| Metric | Score |
+|---|---|
+| Test accuracy | 94.69% |
+| Macro F1-score | 95.07% |
+| Weighted F1-score | 94.69% |
 
-Image-only validation split: 1,224 images
+These numbers describe performance on the reported test split only. They do not establish performance on new locations, cameras, seasons or weather conditions.
 
-Image-only test split: 1,224 images
+### Visual Results
 
+![Image-only model accuracy comparison](./outputs/model_comparison.png)
 
-Classification Categories
+### Separate multimodal experiment
 
+A separate experiment combined sky images with environmental features (PM2.5, PM10, O3, CO, SO2, NO2).
 
-Good
+| Metric | Reported result |
+|---|---|
+| Test accuracy | 99.43% |
+| Macro F1-score | 99.36% |
+| Weighted F1-score | 99.43% |
+| Test samples | 1,061 |
 
-Moderate
+> **Important:** AQI was excluded as an input to avoid direct target leakage. However, pollutant measurements are closely related to AQI and may still carry target-related information. This result may be optimistic and is **not directly comparable** with the image-only results. It needs further leakage analysis and independent validation.
 
-Unhealthy for Sensitive Groups
+---
 
-Unhealthy
+## Repository Structure
 
-Very Unhealthy
+```text
+Air-Pollution-Classification-Deep-Learning/
+├── README.md
+├── Air_Pollution_Classification_Final.ipynb
+└── outputs/
+    └── model_comparison.png
+```
 
-Severe
+---
 
+## How to Run
 
-The image-only experiment uses an 80:10:10 train-validation-test split. Dataset source: Air Pollution Image Dataset from India and Nepal — Kaggle
+### Option 1: Google Colab
 
+1. Open [the notebook](./Air_Pollution_Classification_Final.ipynb) on GitHub and download it, or upload it to Google Colab.
+2. Make the [dataset](https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal) available in the runtime and update the dataset paths if needed.
+3. Run the cells in order.
 
-The dataset files themselves are not included in this repository.
+### Option 2: Run locally
 
-
-🛠️ Tools and Technologies
-
-Tool / Technology	Description
-Python	Main programming language used for model development, data processing, and evaluation.
-TensorFlow	Deep learning framework used to train and evaluate neural networks.
-Keras	High-level API used to build CNN models and implement transfer learning.
-NumPy	Numerical operations and array processing.
-Pandas	Processing tabular environmental metadata and preparing multimodal inputs.
-Matplotlib	Plotting and visualising experimental results.
-Jupyter Notebook	Interactive environment for experiments, code, evaluation, and documentation.
-EfficientNetB0	Pretrained image-classification architecture used for transfer learning and fine-tuning.
-ResNet50	Pretrained architecture used for comparison with other image-classification models.
-Grad-CAM	Visual explanation technique used to highlight image regions influencing a model prediction.
-GitHub	Platform for sharing source code, documentation, and project outputs.
-
-
-The final requirements.txt should be generated from the libraries actually used in the notebook. Do not add dependencies solely because they are listed in this table.
-
-
-
-🧠 Methods and Models
-
-1. Custom CNN
-
-A convolutional neural network trained from scratch to establish a baseline for six-class image classification.
-
-
-2. EfficientNetB0 Transfer Learning
-
-An ImageNet-pretrained EfficientNetB0 architecture adapted to the project's six pollution categories.
-
-
-3. EfficientNetB0 Fine-Tuning
-
-The pretrained model was fine-tuned for the target classification task. The final fine-tuned model produced the strongest reported result among the image-only experiments.
-
-
-4. ResNet50 Transfer Learning
-
-A pretrained ResNet50 architecture was evaluated as a comparison model.
-
-
-5. Grad-CAM Explainability
-
-Grad-CAM heatmaps were generated to inspect which image regions contributed to selected model predictions. These heatmaps provide qualitative explanations; they do not prove causal reasoning.
-
-
-6. Multimodal Image + Environmental Features
-
-An additional experiment combined image inputs with six environmental measurements:
-
-
-
-PM2.5
-
-PM10
-
-O3
-
-CO
-
-SO2
-
-NO2
-
-
-AQI itself was excluded as a direct model input. However, pollutant measurements are closely related to AQI category definitions, so high sensor-assisted performance should be interpreted carefully and independently validated.
-
-
-📊 Results
-
-Image-Only Model Comparison
-
-Model	Reported Test Accuracy	Macro F1-score	Weighted F1-score
-Custom CNN	78.10%	—	—
-EfficientNetB0 — Initial Transfer Learning	90.77%	—	—
-ResNet50	92.32%	92.49%	92.30%
-EfficientNetB0 — Fine-Tuned	94.69%	95.07%	94.69%
-
-The fine-tuned EfficientNetB0 achieved the strongest reported image-only performance, with 94.69% test accuracy.
-
-
-Multimodal Experiment
-
-The notebook reports the following results for the sensor-assisted multimodal experiment:
-
-
-
-Test accuracy: 99.43%
-
-Macro F1-score: 99.36%
-
-Weighted F1-score: 99.43%
-
-Test samples: 1,061
-
-Environmental features: Six pollutant measurements
-
-
-Important interpretation: The multimodal experiment uses a separate usable-record subset and a separate train-validation-test split from the image-only experiment. Its result must not be presented as image-only accuracy or as a directly controlled comparison with the image-only models. Because pollutant measurements are related to the AQI category target, further independent validation and leakage checks are important before drawing real-world conclusions.
-
-
-📈 Model Outputs and Visualizations
-
-Image-Only Model Comparison
-
-The chart below is taken from the project notebook and compares the reported test accuracy of the custom CNN, fine-tuned EfficientNetB0, and ResNet50 models.
-
-
-Image-only model accuracy comparison
-
-
-Upload this image to the repository at outputs/model_comparison.png for it to render here.
-
-
-Upload the original output images to the outputs/ folder and keep these filenames consistent for the links below to work:
-
-
-
-Image-only confusion matrix
-
-Model performance comparison
-
-Grad-CAM examples
-
-
-These links are repository-relative and will become clickable once the corresponding files are uploaded. Do not use placeholder or recreated figures as if they were original experimental outputs.
-
-
-🔗 Quick Access Links
-
-
-Open the project notebook
-
-Download the dataset on Kaggle
-
-Connect with me on LinkedIn
-
-View this GitHub repository
-
-
-🚀 How to Run the Project
-
-Prerequisites
-
-
-Python installed on your computer.
-
-Jupyter Notebook or JupyterLab.
-
-The project notebook.
-
-Access to the dataset files, arranged according to the paths expected by the notebook.
-
-
-1. Clone the Repository
-
-Replace YOUR-GITHUB-USERNAME with the actual GitHub username after creating the repository.
-
-
-git clone https://github.com/YOUR-GITHUB-USERNAME/Air-Pollution-Classification-Deep-Learning.git
+```bash
+git clone https://github.com/shaswatsingh-analytics/Air-Pollution-Classification-Deep-Learning.git
 cd Air-Pollution-Classification-Deep-Learning
 
-2. Create a Virtual Environment
-
 python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# macOS / Linux
+# source .venv/bin/activate
 
-Activate it on Windows:
-
-
-.venv\\Scripts\\activate
-
-3. Install Dependencies
-
-After the project requirements.txt has been verified and uploaded, run:
-
-
-pip install -r requirements.txt
-
-4. Launch Jupyter Notebook
+python -m pip install --upgrade pip
+python -m pip install jupyter tensorflow numpy pandas matplotlib
 
 jupyter notebook
+```
 
-Open the notebook under notebooks/ and follow its dataset-path and execution instructions.
+Open `Air_Pollution_Classification_Final.ipynb`, download the dataset from Kaggle and set the dataset path before running the cells.
 
+---
 
-Compute note: Deep learning training may require substantial computing resources. A compatible GPU or a cloud notebook environment such as Google Colab may be useful.
+## Milestone 1 — Current Progress
 
+**Completed**
 
-📁 Repository Structure
+- [x] Prepared image-only train / validation / test splits
+- [x] Trained and compared Custom CNN, EfficientNetB0 and ResNet50
+- [x] Reached 94.69% test accuracy with fine-tuned EfficientNetB0
+- [x] Reported macro and weighted F1-scores for the best model
+- [x] Implemented Grad-CAM visualisation
+- [x] Ran a separate multimodal experiment
 
-The repository is intended to follow this layout. Only files that have actually been uploaded will appear in GitHub.
+**Planned**
 
+- [ ] Validate on independent images from different locations
+- [ ] Test robustness to lighting, weather and image quality
+- [ ] Analyse possible leakage in the multimodal experiment
+- [ ] Expand per-class evaluation and interpretability analysis
+- [ ] Consider a demo or deployment only after further validation
 
-Air-Pollution-Classification-Deep-Learning/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── data/
-│   └── README.md
-│
-├── notebooks/
-│   └── Air_Pollution_Classification_Final.ipynb
-│
-├── outputs/
-│   ├── confusion_matrix.png
-│   ├── model_comparison.png
-│   └── gradcam_examples.png
-│
-└── reports/
-    └── research_paper.pdf
+---
 
-The full image dataset is not included. data/README.md should explain where to obtain the dataset and how to arrange it locally.
+## Limitations
 
+- **Not a pollutant measurement:** the image-only model predicts dataset labels; it does not measure PM2.5, PM10 or official AQI.
+- **Generalisation:** results on this test split may not carry over to new locations, cameras or seasons.
+- **Image conditions:** lighting, cloud cover, visibility and camera quality affect visual features.
+- **Multimodal results:** pollutant features are related to AQI, so the high score needs leakage checks.
+- **Research prototype:** not validated as a replacement for official air-quality monitoring.
 
-⚠️ Limitations
+---
 
+## Team and Academic Information
 
-Image appearance can change with lighting, weather, camera settings, location, and season.
+| Detail | Information |
+|---|---|
+| Project | Deep Learning-Based Classification of Air Pollution Levels from Sky Images |
+| University | Bennett University, Greater Noida |
+| Course code | 2025CSET703 |
+| Mentor | Dr. Anurag Shrivastava |
+| Team member | Shaswat Singh (S25MCAG0105) - [LinkedIn](https://www.linkedin.com/in/shaswatsinghda27) |
+| Team member | Deepak Kumar (S25MCAG0088) |
 
-Generalisation to unseen cities and environmental conditions requires further validation.
+---
 
-Grad-CAM is a qualitative visualisation technique and does not establish causality.
+## References
 
-Multimodal pollutant features are closely related to AQI categories and may make classification easier than image-only prediction.
+- Rouniyar et al. (2023). *Air Pollution Image Dataset from India and Nepal* [Data set]. Kaggle. [https://doi.org/10.34740/KAGGLE/DS/3152196](https://doi.org/10.34740/KAGGLE/DS/3152196)
+- [APIN dataset on Kaggle](https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal) · [Dataset source repository](https://github.com/ICCC-Platform/Air-Pollution-Image-Dataset-From-India-and-Nepal)
+- [TensorFlow](https://www.tensorflow.org/) · [Keras](https://keras.io/) · [Python](https://docs.python.org/3/)
 
-The image-only and multimodal experiments use different evaluation subsets; their scores are not a controlled, apples-to-apples comparison.
+---
 
-The project is a research prototype and should not be used as a certified AQI measurement system.
+<div align="center">
 
+**MCA Capstone Project · Milestone 1 · Bennett University**
 
+[Repository](https://github.com/shaswatsingh-analytics/Air-Pollution-Classification-Deep-Learning) · [Notebook](./Air_Pollution_Classification_Final.ipynb) · [Dataset](https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal) · [LinkedIn](https://www.linkedin.com/in/shaswatsinghda27)
 
-👥 Team and Acknowledgements
-
-Project Team
-
-
-
-Shaswat Singh — S25MCAG0105
-
-Deepak Kumar — S25MCAG0088
-
-
-Faculty Guide: Dr. Anurag Shrivastava
-Institution: Bennett University, Greater Noida, Uttar Pradesh, India
-Programme: Master of Computer Applications (MCA), Second Year — Third Semester
-Course Code: 2025CSET703
-
-
-
-⭐ If you find this project useful for learning about deep learning, computer vision, or environmental applications, feel free to explore the repository.
-
+</div>
