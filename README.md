@@ -344,22 +344,6 @@ The image-only and multimodal experiments use different evaluation subsets; thei
 The project is a research prototype and should not be used as a certified AQI measurement system.
 
 
-🔮 Future Work
-
-
-Evaluate performance on images from unseen locations and seasons.
-
-Conduct independent external validation.
-
-Investigate lightweight models for edge or mobile deployment.
-
-Expand Grad-CAM analysis to both correct and incorrect predictions.
-
-Evaluate the contribution of each environmental feature and test stronger leakage controls in multimodal experiments.
-
-Explore additional architectures and datasets.
-
-
 👥 Team and Acknowledgements
 
 Project Team
