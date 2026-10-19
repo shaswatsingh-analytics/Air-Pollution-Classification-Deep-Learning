@@ -144,9 +144,6 @@ Exact preprocessing settings and hyperparameters are in the [project notebook](.
 
 These numbers describe performance on the reported test split only. They do not establish performance on new locations, cameras, seasons or weather conditions.
 
-### Visual Results
-
-![Image-only model accuracy comparison](./outputs/model_comparison.png)
 
 ### Separate multimodal experiment
 
